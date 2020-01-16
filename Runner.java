@@ -1,21 +1,25 @@
-package by.select.stage1.main;
+package by.select.stage2.main;
 
-import by.select.stage1.bean.Calculator;
-import by.select.stage1.logic.CalculatorLogic;
+import java.util.Collections;
+import java.util.List;
+
+import by.select.stage2.bean.StringGroup;
+import by.select.stage2.logic.ComparatorStringLength;
+import by.select.stage2.logic.StringGroupLogic;
 
 public class Runner {
-	public static void main (String []args) {
-		int a;
-		int b;
-		char ch;
-		Calculator calc = new Calculator(5,2,'-');
-		
-		
-		CalculatorLogic calcLogic= new CalculatorLogic();
-		a=calcLogic.insertNum();
-		ch=calcLogic.insertSign();
-		b=calcLogic.insertNum();		
-		System.out.println(calcLogic.count(a, b, ch));
+
+	public static void main(String[] args) {
+		StringGroup stringGroup = new StringGroup();
+		List<String> list = stringGroup.getStringGroup();
+		StringGroupLogic stringGroupLogic = new StringGroupLogic();
+		stringGroupLogic.addElement(stringGroup, "Это первая строка");
+		stringGroupLogic.addElement(stringGroup, "Вторая");
+		stringGroupLogic.addElement(stringGroup, "А вот третья");
+		stringGroupLogic.print(stringGroup);
+		Collections.sort(list, new ComparatorStringLength());
+		System.out.println("--------------------------------------");
+		stringGroupLogic.print(stringGroup);
 	}
-	
+
 }
